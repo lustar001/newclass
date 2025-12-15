@@ -1,0 +1,101 @@
+SELECT * FROM emp;
+
+SELECT empno, ename, deptno FROM emp;
+
+SELECT DISTINCT deptno FROM emp;
+SELECT DISTINCT job FROM emp;
+
+SELECT ENAME, SAL, SAL*12+COMM, COMM FROM EMP;
+SELECT ENAME AS name, SAL, SAL*12+COMM AS annsal, COMM FROM EMP;
+
+SELECT * 
+FROM emp 
+ORDER BY SAL;
+
+SELECT * 
+FROM emp 
+ORDER BY SAL DESC;
+
+SELECT * FROM emp ORDER BY empno DESC;
+SELECT * FROM emp ORDER BY deptno asc, sal desc;
+
+SELECT DISTINCT job FROM EMP;
+
+SELECT 
+	empno AS EMPLOYEE_NO, 
+	ename AS EMPLOYEE_NAME 
+FROM emp 
+ORDER BY deptno DESC, ename;
+
+SELECT * FROM emp WHERE deptno = 30;
+
+SELECT * FROM emp WHERE deptno = 30 AND job = 'SALESMAN';
+
+SELECT * FROM emp WHERE empno = 7499 AND deptno = 30;
+
+SELECT * FROM emp WHERE mgr = 7839 AND deptno = 20;
+-- 한줄 주석
+/* 
+  범위 주석 
+ */
+ /* AND 논리곱 (우선) OR 논리합 */
+SELECT * FROM emp WHERE deptno = 30 OR job = 'CLERK';
+
+SELECT * FROM emp WHERE SAL*12=36000;
+
+SELECT * FROM emp WHERE SAL >= 3000;
+
+SELECT * FROM emp WHERE Sal >= 2500 AND job = 'ANALYST';
+
+
+SELECT * FROM emp WHERE sal != 3000;
+SELECT * FROM emp WHERE sal <> 3000;
+
+SELECT * FROM emp WHERE NOT sal = 3000;
+
+SELECT * FROM emp WHERE sal >=1500 AND sal < 3000;
+SELECT * FROM emp WHERE JOB = 'CLERK' OR (sal > 2000 AND deptno = 10);
+SELECT * FROM emp WHERE deptno IN (10,20);
+
+SELECT * FROM emp WHERE JOB IN('MANAGER','SALESMAN','CLERK');
+
+SELECT * FROM emp 
+	WHERE (deptno = 20 OR deptno = 30) 
+		AND (SAL >= 2000 AND SAL <= 3000) 
+	ORDER BY SAL, ename;  
+
+-- between은 초과 미만 사용 불가 
+SELECT * FROM emp 
+WHERE SAL BETWEEN 2000 AND 3000;
+
+SELECT * FROM emp 
+WHERE ENAME LIKE 'S%';
+
+SELECT * FROM emp 
+WHERE ENAME LIKE '%N';
+
+SELECT * FROM emp 
+WHERE ENAME LIKE '_L%';
+
+SELECT * FROM emp 
+WHERE ENAME LIKE '_____';
+
+SELECT * FROM emp 
+WHERE ENAME LIKE '%AM%';
+
+SELECT * FROM emp 
+WHERE ENAME NOT LIKE '%A%';
+
+SELECT comm FROM emp;
+
+SELECT * FROM emp
+WHERE COMM = NULL;
+
+SELECT * FROM emp
+WHERE COMM IS NULL;
+
+SELECT * FROM emp
+WHERE comm IS NOT NULL;
+
+SELECT * FROM EMP 
+WHERE mgr IS NOT NULL;
