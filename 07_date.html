@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const now = new Date(); 
+        console.log(now)
+        // 년
+        const y = now.getFullYear()
+        console.log('년 :',y)
+        // 월 
+        const M = now.getMonth()
+        console.log('월 :',M+1)
+
+        // 일
+        const d = now.getDate()
+        console.log('일 :', d)
+
+        // 요일 
+        const w = now.getDay()
+        console.log('요일 :',w)
+
+        // 시 
+        const h = now.getHours()
+        console.log('시 :', h)
+
+        //분
+        const m = now.getMinutes()
+        console.log('분 :',m)
+
+        //초
+        const s = now.getSeconds()
+        console.log('초 :', s)
+
+        const iso = now.toISOString()
+        console.log(iso)
+        const arr = iso.split('T')
+        console.log(arr)
+        console.log(arr[0])
+
+        const timestamp = now.getTime()
+        console.log(timestamp)
+
+        let before = new Date().getTime()
+        for(let i = 0 ; i<1000 ; i++){
+            console.log(1)
+
+        }
+        let after = new Date().getTime()
+        console.log('after - before:',after - before)
+
+        let time = new Date('2026-03-27')
+        console.log(time.toISOString())
+
+        let now2 = new Date()
+        console.log(now2.toISOString())
+        console.log(now2.getHours())
+        now2.setHours(now2.getHours()+3)
+        console.log(now2.toISOString())
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

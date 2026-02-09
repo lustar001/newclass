@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 함수
+        // function 키워드로 함수 선언 
+        // 전달인자에는 타입을 적지 않는다(let,var)
+
+        function plus(x,y){ 
+            console.log('x', x)
+            console.log('y', y)
+
+            const z = x + y; 
+            return z; 
+        }
+        // z 지역변수 
+
+        const z = plus(2,3)
+        console.log('z: ',z)
+
+        const z2 = plus(2, plus(2,3))
+        //const z2 = plus(2, z)
+        console.log('z2 :', z2)
+
+        console.log('---------------')
+        //전달인자를 안줘도 에러 없음 
+        // 값은 undefined
+
+        let a = plus();
+        console.log('a: ',a)
+
+        console.log('---------------')
+        a = plus(4)
+        console.log('a : ', a)
+
+        // 전달인자를 많이 줘도 
+        // 받을 만큼만 가져간다 
+        console.log('--------------------')
+        a = plus(10,20,30,40)
+        console.log('a : ' , a)
+
+        function plus2(x,y){
+            // if(x == undefined){
+            //     x = 0
+            // }
+            // if(y == undefined){
+            //     y = 0
+            // }
+
+            if(!x){
+                console.log('참',x)
+            }
+
+            return x + y 
+        }
+        console.log(plus2())
+
+        
+        // 전달 인자가 없을 때의 기본값 
+        // 만약에 있으면 그 값 사용 
+        function plus3(x = 0, y = 0){
+            console.log('x', x)
+            console.log('y', y)
+            return x + y; 
+        }
+        console.log(plus3(2))
+
+        let c = [1,2,3]
+        function fn_arr(b){
+            console.log(typeof b)
+            console.log(b[0])
+        }
+        fn_arr(c)
+        console.log(1,2,3,4,5)
+
+        //spread 연산자 
+        // 전달인자의 경우 모든 전달인자를 배열로 관리 
+        function log(...obj){
+            console.log(typeof obj)
+            console.log(obj[0])
+        }
+        log(1,2,3,4,5)
+        // spread 연산자 
+        // 사용할 때는 풀어서 사용 
+        log(...c)
+        log(c[0],c[1],c[2])
+        log(1,2,3)
+        
+        function print(){
+            console.log("print 실행")
+        }
+        print()
+
+
+        // 함수도 상단으로 호이스팅되고 
+        // 같은 함수명의 함수는 덮어쓰기 됨 
+        function print(){
+            console.log("두번째 print 실행")
+        }
+        print()
+
+        let p = print ; 
+        console.log('typeof print', typeof print)
+        console.log('typeof p:', typeof p)
+        p()
+
+        let l = console.log  // () 없으면 변수
+        l(1,2,3)
+
+        // 오버로딩  
+        // 오버로딩 지원하지 않음 
+        function over(){
+
+        }
+        function over(x){
+
+        }
+
+        // 익명함수 
+        let no_name = function (){
+            console.log('익명함수')
+        }
+
+        no_name()
+        let no_name2 = no_name;
+        // 이것과 같다 
+        // function no_name(){
+        //     console.log('익명함수')
+        // }
+
+        console.log('----------------')
+        function test(a){
+            a()
+        }
+        test(no_name)
+
+        //callback 함수 
+        test(function (){
+            console.log('익명함수2')
+        })
+
+        function test2(cb){
+            console.log(typeof cb) //"function"
+            if(typeof cb == "function"){
+
+                cb()
+            } else {
+                console.log('함수가 아닙니다.')
+            }
+            // cb()
+        }
+
+        test2(function(){ })  // function
+        test2(3) // 함수가 아닙니다.(출력값) 
+
+        //setTimeout(함수, 시간ms)
+        // 지연 시간 뒤에 콜백함수를 실행 해줌 
+       setTimeout(no_name, 2000)
+
+        setTimeout(
+            function (){
+             console.log('익명함수3')
+             },
+             3000
+       )
+        let idx = setTimeout(
+            function (){
+             console.log('익명함수3')
+             },
+             3000
+       )
+       console.log('idx :', idx)
+
+       clearTimeout(idx)  //setTimeout 을 취소
+
+       //setTimeout에서 
+       //callback함수에 전달인자 주는 방법 
+
+       let yy = 10
+       setTimeout(
+            function(x,y){
+                console.log(x,y)
+            },
+            1000,
+
+            'a', yy
+       )
+
+       // setInterval
+       // setInterval (콜백함수, 지연시간)
+       // 지연시간 이후 실행을 반복해준다
+       let idx2 = setInterval(function(){
+            console.log('setInterval 실행')
+       },2000)
+
+       setTimeout(function(){
+        clearInterval(idx2)
+       }, 1000*5)
+
+
+
+      clearInterval(idx2)  //setInterval 취소 
+
+
+      function fn(){
+        console.log('fn실행')
+        return 1
+      }
+      let fn2 = fn; 
+      let fn3 = fn();
+      console.log(fn3)
+
+
+      // eval()
+      let str = "console.log('eval', 123)"
+      eval(str)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

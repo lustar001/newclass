@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        //b = 20; // 호이스팅@@@ 
+        b = 200; 
+        // 아무것도 안쓰고 선언하면 js영역의 최상단으로 호이스팅
+
+        console.log(b);
+
+        function test(){
+            
+            var a ; // 호이스팅 발생 
+            // var는 함수 최상단으로 호이스팅
+
+            //이럴 때 문제 발생 
+            //var a = 1; 
+
+            console.log(a)
+
+            if(true){
+                // 위로 올라가서 주석처리 
+                var a = 10; //호이스팅 발생 
+                // a = 10; // 호이스팅 발생
+                // var는 함수 최상담으로 호이스팅 
+
+                b = 20;  // 호이스팅 발생 @@@@
+                // 파일의 최상단으로 호이스팅
+                let c = 30;
+                const d = 40; 
+            }
+            console.log('var a :', a)
+            console.log('b :', b)
+            // 밖에 있는 a,  b 출력 때문에 주석
+            // c,d는 지역변수  
+            // console.log('let c :' + c)
+            // console.log('const d :', d)
+        }
+
+        test();
+
+      //  console.log('var a :', a)
+        console.log('b :', b)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

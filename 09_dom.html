@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .blue {
+            color : blue; 
+        }
+        .red {
+            color : red;
+        }
+        .big {
+            font-size : 2em;
+        }
+        [dat-human=노른자]{
+            font-size:2em;
+        }
+    </style>
+</head>
+<body>
+    <h1 id ="title"> DOM 연습 </h1>
+
+    <div id = "view"> 첫번째 #view</div>
+    <div id = "view"> 두번째 #view</div>
+
+    <div class = "red div2"> 첫번째 .div2</div>
+    <div class = "div2 blue"> 두번째 .div2</div>
+    <div class = "div22 blue"> 두번째 .div2</div>
+
+    <div id = "menu">
+        <div class = "div2"> 닭내장탕 </div>
+        <div class = "div3 abc"> 피자 </div>
+        <div class = "div4" data-human="노른자"> 육회 </div>
+    </div>
+
+    <img alt="뻥튀기" style="width:300px;" src="http://116.36.205.25:5173/uploads/1770182725850_b1c5c594-c523-4967-a8b5-574e1e93c5cd.jpg">  
+     <!-- // //////////사진넣을때 alt 넣기  -->
+
+    <script>
+        // document : html 문서 전체를 뜻한다.
+        console.log(document)
+
+        // getElementById 
+        // id  속성의 값을 이용해서 DOM 을 가져온다
+        const title = document.getElementById('title')
+        console.log(title)
+        console.log(''+title)
+
+        //요소가 없는 경우 null
+        const test = document.getElementById('test')
+        console.log(test)
+
+        // 동일한 id가 여러개 있어도 
+        // 첫번째 dom만 가져온다.
+        let view = document.getElementById('view')
+        console.log(view)
+
+        //getElementsByTagName
+        // tag명으로 DOM찾기
+        // 일치하는 모든 DOM을 배열로 돌려준다.
+        let divs = document.getElementsByTagName('div')
+        console.log(divs)
+
+        // 하나만 있어도 한 개 짜리 배열
+        let h1s = document.getElementsByTagName('h1')
+        console.log(h1s)
+        
+        // 없을 떄 length가 0인 배열 
+        let human = document.getElementsByTagName('human')
+        console.log(human)
+
+        if(human){
+            console.log('참')
+        } else {
+            console.log('거짓')
+        }
+
+        // getElementsByClassName
+        //class가 포함된 DOM 배열을 돌려준다.
+        const div2s = document.getElementsByClassName('div2')
+        console.log(div2s)
+
+        // document : 문서 전체에서
+        // const menu = // 스스로 담아주세
+        const menu = document.getElementById('menu')
+        console.log(menu)
+      
+        // 특정 DOM 안에서도 찾을 수 있다.
+        let div2 = menu.getElementsByClassName('div2')
+        console.log(div2)
+
+        // querySelector
+        // CSS 선택자를 사용할 수 있다.
+        // 하나의 DOM만 돌려준다
+        // 여러개인 경우 처음 나온 DOM하나만 
+        // 없는 경우 null
+        let 닭내장탕 = document.querySelector('#menu .div2')
+        console.log(닭내장탕)
+
+        let 노른자 = document.querySelector('[data-human=노른자]')
+
+        console.log('------------')
+        // querySelectorAll
+        let qs = document.querySelector('.div2')
+        console.log(qs)
+        let qsa = document.querySelectorAll(' .div2')
+        console.log(qsa)
+
+        //////////////////////////////
+        // class 값을 조작
+        let child = document.querySelector('#menu .div3')
+        // classList : class를 배열로 돌려줌
+        console.log(child.classList )
+
+        // add : class 값 추가 
+        child.classList.add('red')
+        // 중복해서 추가하지 않는다.
+        child.classList.add('red')
+        child.classList.add('big')
+        // remove : class 값 삭제
+        child.classList.remove('red')
+        // 없으면 효과 없음 
+        child.classList.remove('red')
+
+        // toggle : 값이 없으면 add, 있으면 remove 
+        // Ctrl+/ 로 주석 할래말래처럼
+        child.classList.toggle('blue')
+        child.classList.toggle('div3')
+
+        // contains
+        // class 값이 있는가? 
+        let isBlue =  child.classList.contains('blue')
+        console.log(isBlue)
+
+        // toggle 구현
+        if(isBlue){
+            child.classList.remove('blue')
+        } else {
+            child.classList.add('blue')
+        }
+
+        /////////////////////////
+        //////속성 
+        const img = document.querySelector('img')
+
+        // hasAttribute
+        // 속성명이 있는지 검사 
+        // readonly, disabled, required 등 검사할 때 좋다
+        const isSrc = img.hasAttribute('src')
+        console.log('isSrc',isSrc)
+
+        // getAttribute
+        let src = img.getAttribute('src')
+        console.log(src)
+
+        // 없으면 null 
+        src = img.getAttribute('src2')
+        console.log(src)
+        
+        // setAttribute 
+        let url = 'http://116.36.205.25:5173/uploads/1769759829661_0c9f9705-756e-4724-b4f6-1cc4a26dcec3.jfif'
+        setTimeout(function(){
+        img.setAttribute('src',url) 
+         },1000*2)
+
+        img.setAttribute('src3','없는거')
+
+        // 육회의 attribute 값을 1강의실로 
+        let 육회 = document.querySelector('#menu .div4')
+        육회.setAttribute('data-human','1강의실')
+
+        // removeAttribute
+        img.removeAttribute('src3') // 속성지우기 
+
+        // DOM 지우기
+        img.remove()
+
+    </script>
+</body>
+</html>

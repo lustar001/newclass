@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = [1,2,3]
+        arr[10] = 100
+        arr['주소'] = '천안' // length에 영향 없음 
+        console.log(arr.length)
+        console.log(arr)
+
+        console.log('---------------')
+        for(let i = 0; i<arr.length ; i++){
+            console.log(arr[i])
+        }
+
+
+        // for in 
+        // in 앞의 변수에 현재 index를 저장 
+        for (let i in arr){
+            console.log('index:', i)
+            console.log('값', arr[i])
+        }
+
+
+        console.log('------------')
+        // for of 
+        // of 앞의 변수에 현재 값을 저장 
+        // java의 향상된 for문과 비슷
+        // '주소'와 같이 숫자가 아닌 index는 못 가져옴 
+        for( let obj of arr){
+            console.log('obj', obj)
+        } 
+
+
+        console.log('!!!!!!!!!!!!!!')
+
+        const arr2 = ['a1', 'a2', 'a3', 'a4']
+        // forEach : 각 항목별로 함수를 실행해 준다 .
+        // 현재값, 현재 index, 전체 배열 
+        // return 없음 
+        let r1 = arr2. forEach( function(element, index, array){
+            console.log('---------')
+            console.log('element: ' ,element)
+            console.log('index: ' ,index)
+            console.log('array: ' ,array)
+        } ) 
+        console.log('r1:', r1)
+
+        const movies = [
+            '만약의 우리',
+            '신의 악단',
+            '아바타 불과재',
+            '주토피아2'
+        ]
+
+        // map : forEach 와 비슷한데 
+        //          return 으로 구성된 새로운 배열을 돌려줌 
+        //          return 이 없으면 그 자리는 undefined가 됨 
+        let r2 = movies.map(function(el, i, arr){
+            console.log('---------')
+            console.log('element: ' ,el)
+            console.log('index: ' ,i)
+            console.log('array: ' ,arr)
+
+            return el.length
+            // if(el.length >= 6){
+            //     return el
+            // }
+        })
+        console.log('r2:' , r2)
+        let r3 = movies.map( el => el.length )
+
+        movies.filter(function(el, i, arr){
+            console.log('---------')
+            console.log('element: ' ,el)
+            console.log('index: ' ,i)
+            console.log('array: ' ,arr)
+
+            if(el.length >= 6){
+                return true
+            } else {
+            return false
+            }
+        })
+        console.log('r4:' , r4)
+        let r5 = movies.filter( e1 => el.length >= 6 )
+
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

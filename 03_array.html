@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> 
+        // 배열 선언 방법 1 
+        const arr1 =  [];
+        // 배열 선언 방법 2 
+        const arr2 = new Array(); 
+
+        // 값을 미리 알고 있을 떄 
+        const arr3 = [1,2, "글씨", 3.14]
+        const arr4 = new Array(1,2, "글씨", 3.14)
+
+        console.log("arr3[0]: ", arr3[0])
+        //arr3 = [11,22]
+        arr3[0] = 10
+        console.log("arr3[0]: ", arr3[0])
+
+        console.log('arr3 : ', arr3)
+        console.log('arr3 : '+ arr3)
+        // 자바는 객체 class , 스크립트는 prototype
+        
+        arr3[10] = 100
+        console.log(arr3[10])
+        console.log('arr3 : ' + arr3)
+        console.log('arr3 : ' , arr3)  // 출력은 나중이라 위에서부터 age 반영 
+
+        arr3["name"] = "지윤"
+        //console.log(arr3[''])
+        console.log('arr3 : ' + arr3)
+        console.log('arr3 : ' , arr3)
+        arr3["age"] = "20"
+        arr3[0] = 11
+        console.log(arr3['age'])
+        console.log('arr3 : ' + arr3)
+        console.log('arr3 : ' , arr3)  //length 에 잡히지는 않지만 존재는 한다. 글씨는 안잡힘  
+
+        console.log('arr4.length: ', arr4.length)
+
+        for (let j = 0; j < arr4.length; j++){
+            console.log(arr4[j])
+        }
+
+        const 중식 = ['탕슉', '짬뽕', '깐쇼새우', '볶음밥']
+        const 양식 = ['파스타','돈까스','스테이크']
+        const 일식 = ['초밥', '카라아케', '오코노미야끼','라멘','타코야끼']
+        const 음식 = [중식, 양식, 일식]
+
+        for(let i = 0; i < 음식.length; i++ ){
+            for (let j = 0; j<음식[i].length; j++){
+                console.log(음식[i][j])
+            }
+        }
+
+        // 배열의 메소드 사용하기 
+        let arr = [1,2,3,4]
+
+        //맨 마지막에 하나 추가 
+        arr.push(5)
+        console.log(arr)
+
+        // 맨 처음에 추가 
+        arr.unshift(0)
+        console.log(arr)
+
+        // 맨 처음것 하나 빼서 돌려주기 
+        let shift = arr.shift()
+        console.log('shift', shift)
+        console.log(arr)
+
+        let pop = arr.pop()
+        console.log('pop', pop)
+        console.log(arr)
+
+        // stack 과 queue
+        // stack 
+        // 나중의 것을 처음에 사용하는 것 
+        // 후입선출  ( Last In First Out - LIFO ) 
+
+        // queue 
+        // 처음 것을 처음에 사용하는 것 
+        // 선입선출 ( First In First Out - FIFO )
+
+        // 배열 뒤집기
+        arr.reverse()
+        console.log(arr)
+
+        arr = [7,3,8,5,2,6]
+        // 배열 오름차순 정렬 
+        let sort = arr.sort()
+        console.log(arr)
+        console.log('sort: ', sort)
+
+        // 함수를 이용해서 내림차순 만들기 
+        // 이건 함수 배우고 
+        // 심지어 화살표까지 
+
+        sort.reverse()
+
+        // chaining 체이닝 체인방식 
+        arr.sort().reverse()  // chaining 방식 
+
+
+        // splice( 시작index, count )
+        /* 
+            원본에서 잘라서 돌려준다(원본 바꿈)
+            시작index가 음수면 뒤에서부터 따진다
+            전달인자가 시작index하나면 끝까지 
+            Ctrl + x 느낌이다. 
+        */ 
+
+        arr = [0,1,2,3,4,5,6]
+        let sp = arr.splice( 2, 3 )
+        console.log(arr)
+        console.log('sp', sp)
+
+        arr = [0,1,2,3,4,5,6]
+        // 뒤에서 4번째부터 오른쪽으로 2개 
+        sp = arr.splice(-4,2)
+        console.log(arr)
+        console.log('sp', sp)
+
+        arr = [0,1,2,3,4,5,6]
+        sp = arr.splice(3)
+        console.log(arr)
+        console.log('sp', sp)
+
+        //count 가 커도 에러 없이 끝까지만 
+        arr = [0,1,2,3,4,5,6]
+        sp = arr.splice(3,100)
+        console.log(arr)
+        console.log('sp', sp)
+
+
+        arr = [0,1,2,3,4,5,6]
+        // 자를건 자르고 그 자리에 새 값을 추가 
+        arr.splice(1,2, 10, 20, 30,40)
+        console.log(arr)
+
+        arr = [0,1,2,3,4,5,6]
+        const arr5 = [10,20,30]
+        console.log(arr5)
+        console.log(...arr5) //spread 연산자 
+                            // 배열을 펼쳐준다 
+        console.log(10,20,30)
+
+        arr.splice(1,0, ...arr5)
+        console.log(arr)
+
+        arr = [0,1,2,3,4,5,6]
+        // 중간에 삽입
+        arr.splice(1, 0, 100)
+        console.log(arr)
+
+
+
+        //slice 
+        /*
+            원본을 유지 
+            시작index부터 끝index 바로 앞까지 
+            복사해서 돌려주기
+            Ctrl + c 느낌 
+        */
+
+        arr = [0,1,2,3,4,5,6]
+        let s = arr.slice(2, 5)
+        console.log(arr)
+        console.log('s', s)
+
+        //끝index가 넘어가도 오류 없이 끝까지만 복사
+        s = arr.slice(2, 50)
+        console.log(arr)
+        console.log('s', s)
+
+        // 전달인자 하나면 거기부터 끝까지
+        s = arr.slice(2)
+        console.log(arr)
+        console.log('s', s)
+
+
+
+        // 시간에서 시 표시할 때 
+        // 12시는 12
+        // 7시는 07
+        // 012, 07 이렇게 0 붙이고 뒤에서 두자리 자르기 
+
+        let hour = 7 
+        let str_hour = '0' + hour 
+        let h = str_hour.slice(-2)
+        console.log('h', h)
+
+        // join 
+        // 원본 안바뀜
+        // 배열을 모두 글씨로 바꿔준다
+        // 전달인자가 없는 경우 , 적어준다.
+        arr = [0,1,2,3,4,5,6]
+        let str = arr.join()
+        console.log('str', str)
+        str = arr.join(';')
+        console.log('str', str)
+
+        // 문자열 함수 split 
+        // 구분자로 잘라서 배열로 만들어 준다. 
+        // 단, 구분자는 사라진다. 
+        let arr6 = str.split(';')
+        console.log(arr6)
+
+        // concat 배열 합치기 
+        let arr7 = [1,2,3,4]
+        let arr8 = arr6.concat(arr7)
+        console.log(arr8)
+
+        console.log(arr8.toString())
+        console.log('' + arr8)
+
+        let arr9 = [2,65,22,35,26,88]
+        // arr9.sort() // 오름차순
+        // arr9.sort(function(x,y, a, b, c){
+        //     console.log(x, y, a, b, c)  
+        // })
+
+        // 내림차순
+        arr9.sort(function(x,y){
+            return y - x 
+        })
+        console.log(arr9)
+
+        arr9.sort((x,y) => y - x )
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

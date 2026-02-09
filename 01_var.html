@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 한줄 주석
+        /* 
+            여러줄 주석 
+            범위 주석
+        */
+
+        console.log("hello world");
+
+        //변수 선언 방법1
+        // var 사용 
+        var a =10;
+        console.log("a : " + a);
+        var b = "글씨"
+        console.log("b : " + b);
+        a = "글씨"
+        console.log("a : " + a);
+
+        // 변수 선언 방법2 
+        // 타입 없음 
+        c = 20;
+        console.log('c : ' + c);
+
+        //변수 선언 방법 3
+        let d = 30;
+        console.log('d : ' + d)
+
+        //변수 선언 방법 4
+        const e = 40;  // 더이상 바꾸지 않을 때 사용 
+        console.log('e : ' + e);
+
+        // var 는 같은 변수명으로 재선언 가능 
+        var a = 20;
+        console.log('a : ' + a);
+        
+        //let, const 같은 변수명으로 재선언 불가능 
+        //let d = 40;
+        //const e = 40;
+
+        d = 100;
+        console.log('d : ' + d)
+
+       // e = 200; 
+        console.log('e : ' + e)
+
+        // const는 선언할 때 값을 무조건 줘야한다 
+        //const f;
+
+        //js 문법
+        //ECMA Script 6
+
+        let a1 = "문자"
+        let a2 = 3
+        
+        console.log(typeof a1)
+        console.log(typeof a2)
+
+        let b1 = 1.5;
+        let b2 = "1.5";
+        console.log(b1 == b2) //값 비교
+        console.log(b1 === b2) //값 + 타입까지 비교
+
+        console.log(a1 * 3) //NaN
+        //NaN
+        //Not a Number
+        console.log(b2 * 3) //놀랍게도 연산한다
+        console.log(b2 + 2) // 문자열 + 
+        console.log(b2 - 2)
+
+
+        /* 
+            String a = "123";
+            int b = Integer.parseInt(a); // 123
+
+        */
+
+        b2 = 1.5;
+        console.log(parseInt(b2) + 3)
+        console.log(Number(b2) + 3)
+
+        let c1 = "이것"
+        console.log(c1 * 2) //NaN
+        console.log(isNaN(c1 * 2)) 
+
+        console.log( 5 / 0 )
+        console.log(isFinite(5/0)) //유한인가? 
+
+        alert('아무\n거나')
+        let h = confirm('할꺼임?')
+        console.log('confirm h :' + h);
+        let i = prompt("비번 입력하세요")
+        console.log('prompt i : ' + i)
+        console.log("입력한 글씨는 " + i + "입니다.")
+        console.log( `입력한 글씨는 ${i} 입니다`) //물결표시 있는 부분임 ` \
+
+        console.error("빨강")
+
+       // int a, b, c;
+       let  j = "맘대로", 
+            k = 10, 
+            l;
+
+        console.log(j,'\n',k)
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
